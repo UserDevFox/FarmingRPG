@@ -119,11 +119,11 @@
             }
         },
         {
-            "Key": "4a5c7041-0de2-4418-86af-e2775e9ee53a",
+            "Key": "464b39ba-816e-411a-af2f-4cfda394f175",
             "Value": {
-                "id": "e86314e9-7e8e-4a3f-9366-ba6e952edd51",
-                "resourcePath": "sprites\/spr_player\/spr_player.yy",
-                "resourceType": "GMSprite"
+                "id": "f1734b81-9404-46bc-b418-65dba7af2068",
+                "resourcePath": "tilesets\/tile_cottage\/tile_cottage.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -140,6 +140,14 @@
                 "id": "dbc622da-dcce-4793-a031-687219ae3fb2",
                 "resourcePath": "sprites\/spr_base_male_1\/spr_base_male_1.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "5c77d9a7-6d35-4f5f-8c6a-ea03e7b8b5f6",
+            "Value": {
+                "id": "a0431cbf-f44b-40a1-84d4-6ff5b86080d8",
+                "resourcePath": "tilesets\/tile_terrain\/tile_terrain.yy",
+                "resourceType": "GMTileSet"
             }
         },
         {
@@ -203,6 +211,22 @@
             "Value": {
                 "id": "f6033d02-ec21-4902-841a-feafdad6cfaf",
                 "resourcePath": "sprites\/spr_torso_male_shirt_white\/spr_torso_male_shirt_white.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "87522826-9ee8-4f77-9ff1-4fa54e90c869",
+            "Value": {
+                "id": "dd86fb01-b827-4eaf-aa8a-6743a9b69e28",
+                "resourcePath": "sprites\/spr_tile_cottage\/spr_tile_cottage.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "8f8b808b-335c-49d8-8e60-f9b00eede0da",
+            "Value": {
+                "id": "8074e731-a710-4c81-8174-d004294f1deb",
+                "resourcePath": "sprites\/spr_tile_terrain\/spr_tile_terrain.yy",
                 "resourceType": "GMSprite"
             }
         },
