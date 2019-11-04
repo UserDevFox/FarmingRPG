@@ -87,6 +87,14 @@
             }
         },
         {
+            "Key": "243af8d8-4ad0-4004-80fc-1ecb12bcd63c",
+            "Value": {
+                "id": "c0b07cb9-5692-4195-8b81-696d1c76d038",
+                "resourcePath": "shaders\/sh_hair\/sh_hair.yy",
+                "resourceType": "GMShader"
+            }
+        },
+        {
             "Key": "2559a8c4-1b33-43f8-a49d-0db05fb89d69",
             "Value": {
                 "id": "bee30aee-1600-4f3f-bb34-c68340a65312",
