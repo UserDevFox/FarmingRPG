@@ -12,10 +12,6 @@ else                x_frame =  0; // Idle
 var xx = x-x_offset;
 var yy = y-y_offset;
 
-// INCREMENT FRAME FOR ANIMATION
-if (x_frame + anim_speed / room_speed < anim_length) { x_frame += anim_speed / room_speed; }
-else					                             { x_frame = 1;  }
-
 // DRAW SHADOW
 if (spr_shadow != -1) draw_sprite(spr_shadow, 0, x, y);
 
@@ -33,3 +29,7 @@ if (spr_torso != -1) draw_sprite_part(spr_torso, 0, floor(x_frame) * frame_size,
 
 // DRAW CHARACTER HAIR
 if (spr_hair != -1) draw_sprite_part(spr_hair, 0, floor(x_frame) * frame_size, y_frame * frame_size, frame_size, frame_size, xx, yy);
+
+// INCREMENT FRAME FOR ANIMATION
+if (x_frame < anim_length - 1) { x_frame += anim_speed / room_speed; }
+else					       { x_frame = 1;  }
