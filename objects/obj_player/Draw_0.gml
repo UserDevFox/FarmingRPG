@@ -15,7 +15,7 @@ var yy = y-y_offset;
 // INCREMENT FRAME FOR ANIMATION
 if (x_frame + anim_speed / room_speed < anim_length) { x_frame += anim_speed / room_speed; }
 else					                             { x_frame = 1;  }
-
+//x_frame = 8;
 // DRAW CHARACTER BASE
 draw_sprite_part(spr_base, 0, floor(x_frame) * frame_size, y_frame * frame_size, 64, 64, xx, yy);
 
@@ -34,20 +34,18 @@ if (use_shader) {
 	shader_set(sh_hair);
 	shader_set_uniform_f_array(shader_hair_uni, hair_color);
 	var uv = sprite_get_uvs(spr_hair, 0);
-	//var left = floor(x_frame) / (anim_length * 1.0);
-	//var right = (floor(x_frame) + 1) / (anim_length * 1.0);
-	var left = 0 / (anim_length * 1.0);
-	var right = 1 / (anim_length * 1.0);
-	var uv_width = uv[2]-uv[0];
+	var hair_texture = sprite_get_texture(spr_hair, 0);
+	var hair_texture_width = 1024; // TODO: Find this programatically
+	var hair_uv_2 = (anim_length * frame_size) / hair_texture_width;
+	
+	var left = (floor(x_frame)) / (anim_length * 1.0);
+	var right = (floor(x_frame) + 1) / (anim_length * 1.0);
+	show_debug_message("hair_tex_width: "+string(hair_texture_width)+" uv[4]: "+string(uv[4])+" uv[6]: "+string(uv[6])+" uv[2]: "+string(uv[2])+" hair_uv_2: "+string(hair_uv_2));
+	var uv_width = (hair_uv_2-uv[0]);
 	
     shader_set_uniform_f(shader_hair_uv_uni, uv[0]+(left*uv_width), uv[0]+(right*uv_width) );
-	//shader_set_uniform_f(shader_hair_uv_uni, uv[0], uv[2] );
 }
 draw_sprite_part(spr_hair, 0, floor(x_frame) * frame_size, y_frame * frame_size, 64, 64, xx, yy);
-draw_sprite_part(spr_hair, 0, floor(x_frame + 1) * frame_size, y_frame * frame_size, 64, 64, xx + 32, yy);
-draw_sprite_part(spr_hair, 0, floor(x_frame + 2) * frame_size, y_frame * frame_size, 64, 64, xx + 64, yy);
-draw_sprite_part(spr_hair, 0, floor(x_frame + 3) * frame_size, y_frame * frame_size, 64, 64, xx + 96, yy);
-draw_sprite_part(spr_hair, 0, floor(x_frame + 4) * frame_size, y_frame * frame_size, 64, 64, xx + 128, yy);
 if (use_shader) shader_reset();
 
 
