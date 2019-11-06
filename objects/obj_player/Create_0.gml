@@ -22,8 +22,3 @@ spr_hair  = spr_hair_female_pixie_blonde;
 shader_hair_uni    = shader_get_uniform(sh_hair, "u_color");
 hair_color         = [0.2, 0.4, 0.2, 1.0];
 shader_hair_uv_uni = shader_get_uniform(sh_hair, "u_uv");
-
-var uv = sprite_get_uvs(spr_hair, 0);
-show_debug_message("Hair: UV 0 and 2: "+ string(uv[0])+" "+string(uv[2]));
-uv = sprite_get_uvs(spr_character_collision_mask, 0);
-show_debug_message("Mask: UV 0 and 2: "+ string(uv[0])+" "+string(uv[2]));

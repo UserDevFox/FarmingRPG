@@ -5,7 +5,7 @@ varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 uniform vec4 u_color;
-uniform vec2 u_uv;
+uniform vec2 u_uv; // Left and right coordinates in texture
 
 vec3 hsv2rgb(vec3 c)
 {
@@ -36,13 +36,17 @@ void main()
     gl_FragColor = vec4(gray, gray, gray, texColor.a);
 	*/
 	
+	//*
 	// Rainbow shader
 	float res = (u_uv[1] - u_uv[0]);
 	float x_pos = (v_vTexcoord.x - u_uv[0]) / res;
-	vec3 col = vec3(fract((x_pos * 8 + 0.250)), 1.0, 1.0);
+	float phase = 4.0; //4.0;
+	float offset = 0.250;//.250;
+	vec3 col = vec3(fract((x_pos * phase + offset)), 1.0, 1.0);
     vec4 texColour = texture2D( gm_BaseTexture, v_vTexcoord );
 
     gl_FragColor = vec4(texColour.rgb * hsv2rgb(col), texColour.a);
 	//gl_FragColor = vec4(x_pos, x_pos, x_pos, 1.0);
     //gl_FragColor = vec4(hsv2rgb(col), 1.0);
+	
 }
