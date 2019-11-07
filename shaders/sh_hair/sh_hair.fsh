@@ -40,13 +40,11 @@ void main()
 	// Rainbow shader
 	float res = (u_uv[1] - u_uv[0]);
 	float x_pos = (v_vTexcoord.x - u_uv[0]) / res;
-	float phase = 4.0; //4.0;
-	float offset = 0.250;//.250;
+	float phase = 1.0; //4.0;
+	float offset = 0.0;//250;//.250;
 	vec3 col = vec3(fract((x_pos * phase + offset)), 1.0, 1.0);
     vec4 texColour = texture2D( gm_BaseTexture, v_vTexcoord );
 
     gl_FragColor = vec4(texColour.rgb * hsv2rgb(col), texColour.a);
-	//gl_FragColor = vec4(x_pos, x_pos, x_pos, 1.0);
-    //gl_FragColor = vec4(hsv2rgb(col), 1.0);
 	
 }

@@ -33,19 +33,19 @@ use_shader = keyboard_check(ord("S"));
 if (use_shader) {
 	shader_set(sh_hair);
 	shader_set_uniform_f_array(shader_hair_uni, hair_color);
-	var uv = sprite_get_uvs(spr_hair, 0);
+	// Coordinates for the entire hair sprite in texture space. Entire texture has a width of 1.0
+	var hair_uv = sprite_get_uvs(spr_hair, 0);
 	var hair_texture = sprite_get_texture(spr_hair, 0);
-	var hair_texture_width = texture_get_width(hair_texture) / texture_get_texel_width(hair_texture);
-	var hair_uv_2 = (anim_length * frame_size) / hair_texture_width;
+		
+	// The width of one sprite pixel in texture space
+	var hair_texel_width = texture_get_texel_width(hair_texture);
 	
-	var left = (floor(x_frame)) / anim_length;
-	var right = (floor(x_frame) + 1) / anim_length;
-	show_debug_message("hair_tex_width: "+string(hair_texture_width)+" uv[4]: "+string(uv[4])+" uv[6]: "+string(uv[6])+" uv[0]: "+string(uv[0])+" uv[2]: "+string(uv[2])+" hair_uv_2: "+string(hair_uv_2));
-	var uv_width = (hair_uv_2-uv[0]);
-	var hair_frame_uv_width = uv_width / anim_length;
+	// The left edge in texture space of the x_frame of the hair sprite animation
+	var s1 = hair_uv[0] + floor(x_frame) * frame_size * hair_texel_width ;
+	// The right edge in texture space of the x_frame of the hair sprite animation
+	var s2 = s1 + (frame_size ) * hair_texel_width;
 	
-    shader_set_uniform_f(shader_hair_uv_uni, uv[0]+(left*uv_width), uv[0]+(left*uv_width)+hair_frame_uv_width );
-	//shader_set_uniform_f(shader_hair_uv_uni, uv[0]+(left*uv_width), hair_uv_2+(left*uv_width) );
+	shader_set_uniform_f(shader_hair_uv_uni, s1, s2);
 }
 draw_sprite_part(spr_hair, 0, floor(x_frame) * frame_size, y_frame * frame_size, 64, 64, xx, yy);
 if (use_shader) shader_reset();
