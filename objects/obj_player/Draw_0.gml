@@ -29,7 +29,7 @@ draw_sprite_part(spr_legs, 0, floor(x_frame) * frame_size, y_frame * frame_size,
 draw_sprite_part(spr_torso, 0, floor(x_frame) * frame_size, y_frame * frame_size, 64, 64, xx, yy);
 
 // DRAW CHARACTER HAIR
-use_shader = keyboard_check(ord("S"));
+var use_shader = sh_hair != -1;
 if (use_shader) {
 	shader_set(sh_hair);
 	shader_set_uniform_f_array(shader_hair_uni, hair_color);
