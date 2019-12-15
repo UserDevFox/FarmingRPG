@@ -17,9 +17,18 @@ if (input_run or input_walk) {
 moveX = 0;
 moveY = 0;
 
-//-------- INTENDED MOVEMENT
+//-------- GET INTENDED MOVEMENT
 moveY = (input_down - input_up) * spd;
 if (moveY == 0) { moveX = (input_right - input_left) * spd; }
+
+//-------- GET DIRECTION PLAYER IS FACING
+if (moveX != 0) {
+	facing = moveX > 0 ? dir.right : dir.left;	
+} else if (moveY != 0) {
+	facing = moveY > 0 ? dir.down : dir.up;	
+} else {
+	facing = -1;
+}
 
 //-------- COLLISION CHECKS
 // Horizontal
@@ -45,6 +54,21 @@ if (moveY != 0) {
 		moveY = 0;
 	}
 }
+
+// Objects
+var inst_transition = instance_place(x,y,obj_transitions);
+if (inst_transition != noone and facing == inst_transition.playerFacingBefore) {
+	with (game) {
+		if (!doTransition) {
+			spawnRoom = inst_transition.targetRoom;
+			spawnX = inst_transition.targetX;
+			spawnY = inst_transition.targetY;
+			spawnPlayerFacing = inst_transition.playerFacingAfter;
+			doTransition = true;
+		}
+	}
+}
+
 //-------- APPLY MOVEMENT
 x += moveX;
 y += moveY;

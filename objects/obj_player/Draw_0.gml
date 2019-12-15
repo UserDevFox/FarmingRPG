@@ -3,11 +3,13 @@ var anim_length = 9;
 var frame_size = 64;
 var anim_speed = 12;
 
-if      (moveX < 0) y_frame =  9; // Left
-else if (moveX > 0) y_frame = 11; // Right
-else if (moveY < 0) y_frame =  8; // Up
-else if (moveY > 0) y_frame = 10; // Down
-else                x_frame =  0; // Idle
+switch (facing) {
+	case dir.left:  y_frame =  9; break;
+	case dir.right: y_frame = 11; break;
+	case dir.up:    y_frame =  8; break;
+    case dir.down:  y_frame = 10; break;
+	case -1:        x_frame =  0; break; // Idle
+}
 
 var xx = x-x_offset;
 var yy = y-y_offset;

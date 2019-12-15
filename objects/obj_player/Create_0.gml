@@ -19,3 +19,5 @@ spr_legs   = spr_legs_female_pants_magenta;
 spr_torso  = spr_torso_female_sleeveless_red;
 spr_hair   = spr_hair_female_pixie_blonde;
 spr_shadow = spr_character_shadow;
+
+facing = 0;
